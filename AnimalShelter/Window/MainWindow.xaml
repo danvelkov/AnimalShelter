@@ -1,0 +1,239 @@
+﻿<Window x:Class="AnimalShelter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Приют Нов Шанс" Height="420" Width="620" 
+        Icon="/Resources/Icons/shelter.png"
+        WindowStartupLocation="Manual" ResizeMode="CanMinimize"
+        Closing="WindowClosing">
+    <Window.Resources>
+        <!-- Label -->
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0 10 0 10"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#383838"/>
+        </Style>
+
+        <!-- TextBox -->
+        <Style TargetType="TextBox">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="BorderBrush" Value="#FFABADB3"/>
+        </Style>
+
+        <!-- PasswordBox -->
+        <Style TargetType="PasswordBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border Name="Border" BorderBrush="#FFABADB3" CornerRadius="5" BorderThickness="1">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 0 10"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="220"/>
+
+        </Style>
+
+        <!-- Button -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Foreground" Value="#383838"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="Background" Value="#FFBB22"/>
+            <Setter Property="Margin" Value="50 0"/>
+        </Style>
+
+        <!-- Square Button -->
+        <Style TargetType="Button" x:Key="squareButton">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Foreground" Value="#383838"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Background" Value="#FFBB22"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <TabControl Margin="5" BorderBrush="Gainsboro">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#FFBB22" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Foreground="#383838" FontSize="15" Header="Потребител">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Потребител" />
+                        <Label x:Name="username" Grid.Row="0" Grid.Column="1" Content="Alabala"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Име" />
+                        <Label x:Name="personName" Grid.Row="1" Grid.Column="1" Content="Джонибанана"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="Email" />
+                        <Label x:Name="email" Grid.Row="2" Grid.Column="1" Content="Malibu"/>
+
+                        <Button Grid.Row="3" Grid.Column="0" Click="EditButton_Click"
+                            Content="Редактирай профил" 
+                            Margin="30,10,340,10" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Margin="0 90 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <PasswordBox Margin="10,11,306,11" x:Name="adminPassword" Grid.Row="0" Grid.Column="0"  Width="Auto" Grid.ColumnSpan="2" />
+                        <Button Click="AdminButton_Click" Grid.Row="0" Grid.Column="1" Content="Администратор" Margin="140,10,32,10"/>
+                    </Grid>
+                </StackPanel>
+
+            </TabItem>
+
+            <TabItem Foreground="#383838" FontSize="15" Header="Животни">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Click="AddButton_Click" Style="{StaticResource squareButton}"  Grid.Row="0" Grid.Column="0" Content="Добави/Тип/Ваксина"/>
+                    <Button Click="RemoveButton_Click" Style="{StaticResource squareButton}"  Grid.Row="0" Grid.Column="1" Content="Премахни/Тип/Ваксина"/>
+                    <Button Click="FindAnimalButton_Click" Style="{StaticResource squareButton}"  Grid.Row="1" Grid.Column="0" Content="Потърси"/>
+                    <Button Click="VaccineButton_Click" Style="{StaticResource squareButton}"  Grid.Row="1" Grid.Column="1" Content="Ваксини"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Foreground="#383838" FontSize="15" Header="Осиновяване">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Животно"/>
+                        <TextBox x:Name="animalInfo" IsReadOnly="True" MouseDoubleClick="Animal_MouseDoubleClick"  Grid.ColumnSpan="2" Margin="136,10,32,10" Width="Auto"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Име"/>
+                        <TextBox x:Name="adopterName" Grid.Row="1" Grid.Column="1"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="ЕГН"/>
+                        <TextBox x:Name="adopterPin" Grid.Row="2" Grid.Column="1"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Адрес"/>
+                        <TextBox x:Name="adopterAddress" Grid.Row="3" Grid.Column="1"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Телефонен номер"/>
+                        <TextBox x:Name="adopterNumber" Grid.Row="4" Grid.Column="1"/>
+
+                        <Button Click="AdoptButton_Click" Grid.Row="5"  Content="Завърши" Margin="47,47,32,-59" Grid.Column="1" Width="Auto"/>
+                        <Label Visibility="Hidden" HorizontalContentAlignment="Center" x:Name="notCorrectFields" Foreground="Salmon" Grid.Row="4" Grid.Column="1" Content="Въведи правилни данни" Margin="47,42,32,-15" Grid.RowSpan="2"/>
+
+                        <Button Click="AllAdoptionsButton_Click" Grid.Row="5"  Content="Всички осиновявания" Margin="32,47,47,-59" Grid.Column="0" Width="Auto"/>
+
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem x:Name="admin" Visibility="Hidden" HorizontalAlignment="Right" Foreground="#383838" FontSize="15" Header="Администратор" Margin="0,0,-110,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.65*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Име на потребител"/>
+                    <TextBox x:Name="newUsername" Grid.Row="0" Grid.Column="1" Margin="10" Width="Auto"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Парола"/>
+                    <PasswordBox x:Name="newPassword" Grid.Row="1" Grid.Column="1" Margin="10" Width="Auto"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="Име на служител"/>
+                    <TextBox x:Name="newName" Grid.Row="2" Grid.Column="1" Margin="10" Width="Auto"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="Email"/>
+                    <TextBox x:Name="newEmail" Grid.Row="3" Grid.Column="1" Margin="10" Width="Auto"/>
+
+                    <Label Visibility="Hidden" HorizontalContentAlignment="Center" x:Name="notCorrectFieldsProfile" Foreground="Salmon" Grid.Row="4" Grid.Column="0" Content="Въведи правилни данни" Grid.ColumnSpan="2" Margin="0,40,0,41" Grid.RowSpan="2"/>
+                    <Button Click="AddUserButton_Click" Grid.Row="4" Grid.ColumnSpan="2" Width="auto" Content="Добави потребител"/>
+                    <Button Click="AllUserButton_Click" Grid.Row="5" Grid.ColumnSpan="2" Width="auto" Content="Всички потребители"/>
+
+                    <Border Grid.Column="2" Grid.Row="0" Grid.RowSpan="6" BorderBrush="#383838" 
+                        BorderThickness="2,0,0,0"/>
+
+
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" Content="Име на отделение"/>
+                    <TextBox x:Name="compartmentName" Grid.Row="1" Grid.Column="2" Margin="10,11" Width="Auto"/>
+                    <Button Click="AddCompartmentButton_Click" Grid.Row="2" Grid.Column="2" Width="auto" Content="Добави"/>
+                    <Label Visibility="Hidden" HorizontalContentAlignment="Center" x:Name="notCorrectFieldsCompartment" Foreground="Salmon" Grid.Row="1" Grid.Column="2" Content="Въведи правилни данни" Margin="0,36,0,42" Grid.RowSpan="2"/>
+
+                    <ListView SelectedValuePath="compartment_id"  x:Name="compartmentList" DisplayMemberPath="compartment_name" ItemsSource="{Binding}" Margin="10" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2"/>
+                    <Button Click="RemoveCompartmentButton_Click" Grid.Row="5" Grid.Column="2" Width="auto" Content="Премахни"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

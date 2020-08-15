@@ -1,0 +1,75 @@
+﻿<Window x:Class="AnimalShelter.Window.EditProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Редактирай Профил" Height="310" Width="365" Icon="/Resources/Icons/shelter.png">
+    <Window.Resources>
+        <!-- Button -->
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="17"/>
+            <Setter Property="Foreground" Value="#383838"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="Background" Value="#FFBB22"/>
+            <Setter Property="Margin" Value="10 30"/>
+        </Style>
+
+        <!-- Label -->
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0 5 0 10"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#383838"/>
+        </Style>
+
+        <!-- TextBox -->
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="220"/>
+        </Style>
+
+        <!-- PasswordBox -->
+        <Style TargetType="PasswordBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="220"/>
+        </Style>
+    </Window.Resources>
+    <Border Margin="5 35">
+        <StackPanel>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Foreground="#383838" Grid.Row="0" Grid.Column="0" Content="Нова Парола:" />
+                <PasswordBox x:Name="newPassword" Grid.Row="0" Grid.Column="1"/>
+
+                <Label Foreground="#383838" Grid.Row="1" Grid.Column="0" Content="Ново Име:" />
+                <TextBox x:Name="newName" Grid.Row="1" Grid.Column="1"/>
+
+                <Label Foreground="#383838" Grid.Row="2" Grid.Column="0" Content="Нов Email:" />
+                <TextBox x:Name="newEmail" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button Click="SaveButton_Click" Grid.Column="0" Content="Запази"/>
+                <Button Click="CancelButton_Click" Grid.Column="1" Content="Отказ"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>
