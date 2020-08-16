@@ -22,8 +22,8 @@
 ![ER Model https://postimg.cc/tYjqw0sz](https://i.postimg.cc/BQ8j84sR/shelter-ver-6-for-github.png)
 
 **Technologies used**
-- WPF
-- MySQL Connector
+- <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/" targe="_blank">WPF</a>
+- <a href="https://www.mysql.com/products/connector/" target="_blank">MySQL Connector</a>
 - <a href="https://github.com/ClosedXML/ClosedXML" target="_blank">ClosedXML</a>
  
 ---
